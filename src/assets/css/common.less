@@ -1,0 +1,29 @@
+// 公共样式
+// 设置常见的屏幕尺寸，修改里面的html文字大小
+// PC端也可以打开，默认字体大小为50px。  注意一定要写在最上面，代码是从上往下执行的，样式具有层叠性
+html {
+  font-size: 50px;
+}
+// 此次定义划分的份数
+// less变量命名 @变量名:值;  不能以数字开头
+
+// @media only screen and (min-width: 1500px) {
+//   html, body { min-width: 1500px; }
+// }
+
+@no: 20;
+
+
+// 1440
+@media screen and(min-width: 1440px) {
+  html {
+    font-size: 1440px / @no;
+  }
+}
+
+// 1920
+@media screen and(min-width: 1920px) {
+  html {
+    font-size: 1920px / @no;
+  }
+}
