@@ -40,7 +40,7 @@
       <li v-for="item in videos" :key="item.item">
         <img :src="item.coverUrl" alt="">
         <p>{{item.title}}</p>
-        <p v-for="items in item.creator" :key="items.items" class="creator">by {{items.userName}}</p>
+        <p class="creator">by <span v-for="items in item.creator" :key="items.items" >{{items.userName}} </span></p>
       </li>
     </ul>
     <!-- <ul class="lyric">
@@ -56,6 +56,14 @@
           </tr>
         </table>
       <!-- </li> -->
+    </ul>
+    <ul class="radio">
+      <li v-for="item in radio" :key="item.item">
+        <img :src="item.picUrl" alt="">
+        <p>{{item.name}}</p>
+        <p class="artist">{{item.dj.nickname}}</p>
+      </li>
+      <!-- <li v-for="item in albums" :key="item.item">{{item.name}}</li> -->
     </ul>
   </div>
 </template>
@@ -73,6 +81,8 @@ export default {
       videos: [],
       lrc: [],
       playlists: [],
+      radio: [],
+      user: [],
       // show: false,
       // songsCount: Number,
       // artistsCount: Number
@@ -83,15 +93,6 @@ export default {
     }
   },
   created() {
-    // this.$bus.$on('select',(item) => {
-    //   console.log(item.type);
-    //   // if(item.type = 1) {
-    //   //   showS = true
-    //   // } else {
-    //   //   showS = false
-    //   // }
-      
-    // })
     const keywords = this.$route.query.s
     const type = this.$route.query.type
     getSearch(keywords, type, 100).then(res => {
@@ -105,8 +106,10 @@ export default {
       this.videos = res.data.result.videos
       // this.lrc = res.data.result.songs
       this.playlists = res.data.result.playlists
+      this.radio = res.data.result.djRadios
+      this.user = res.data.result.userprofiles
       console.log(res);
-      console.log(songPages);
+      // console.log(songPages);
       
       // console.log(this.songsCount);
       
@@ -132,9 +135,6 @@ export default {
     }
 
   },
-  // beforeDestroyed() {
-  //   this.$bus.$off('select')
-  // },
   methods: {
     // change() {
     //   if(this.$route.query.type = 1) {
@@ -193,10 +193,10 @@ export default {
   .song table tr:nth-child(2n) {
     background: #f7f7f7;
   }
-  .artist li, .album li {
+  .artist li, .album li, .radio li {
     height: 184px;
   }
-  .artist p, .album p {
+  .artist p, .album p, .video p, .radio p {
     margin-top: 3px;
     width: 130px;
     height: 18px;
@@ -221,7 +221,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .album .artist ,.video .creator {
+  .album .artist ,.video .creator, .radio {
     font-size: 10px;
     color: #666;
   }

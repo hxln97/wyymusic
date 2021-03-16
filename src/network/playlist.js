@@ -8,9 +8,14 @@ export function getPlaylistCategory() {
 }
 
 // 歌单每个分类中显示的歌单
-export function getPlaylistCategoryContent(cat) {
+export function getPlaylistCategoryContent(cat, limit, offset) {
     return request({
-        url: '/top/playlist/?cat=' + cat
+        url: '/top/playlist',
+        params: {
+            cat,
+            limit,
+            offset
+        }
     })
 }
 

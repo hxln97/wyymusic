@@ -9,7 +9,7 @@
         <!-- <h3 v-show="this.$route.query.type=1">搜索找到单曲</h3>
         <h3 v-show="this.$route.query.type=10">搜索找到歌手</h3> -->
         <ul class="tab">
-          <li v-for="item in tab" :key="item.item" 
+          <li v-for="item in tab.slice(0,6)" :key="item.item" 
             :class="{active: item.type === currentType}"
             @click="tabClick(item)">
             {{item.name}}</li>
@@ -193,6 +193,7 @@ export default {
   .tab {
     margin: 50px 0 10px 0;
     display: flex;
+    justify-content: space-around;
     flex-wrap: nowrap;
     height: 40px;
     line-height: 40px;
@@ -202,7 +203,7 @@ export default {
     border-top: 2px solid #ccc;
   }
   .tab li {
-    width: 14.28%;
+    padding: 0 20px;
     text-align: center;
   }
   // .tab li:first-child {

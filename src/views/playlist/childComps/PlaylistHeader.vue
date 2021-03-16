@@ -11,7 +11,7 @@
           <el-aside width="100px">语种</el-aside>
           <el-main>
             <el-dropdown-item v-for="item in language" 
-                               :key="item.item" @click.native="itemClick(item)"
+                               :key="item.item" @click.native="itemClick(item) "
                                index="item.name">
               <span>{{item.name}}</span>
             </el-dropdown-item>
@@ -21,7 +21,7 @@
           <el-aside width="100px">风格</el-aside>
           <el-main>
             <el-dropdown-item v-for="item in style" 
-                               :key="item.item" @click.native="itemClick(item)"
+                               :key="item.item" @click.native="itemClick(item) "
                                index="item.name">
               <span>{{item.name}}</span>
             </el-dropdown-item>
@@ -31,7 +31,7 @@
           <el-aside width="100px">场景</el-aside>
           <el-main>
             <el-dropdown-item v-for="item in scene" 
-              :key="item.item" @click.native="itemClick(item)"
+              :key="item.item" @click.native="itemClick(item) "
               index="item.name">
               <span>{{item.name}}</span>
             </el-dropdown-item>
@@ -41,7 +41,7 @@
           <el-aside width="100px">情感</el-aside>
           <el-main>
             <el-dropdown-item v-for="item in emotional" 
-              :key="item.item" @click.native="itemClick(item)"
+              :key="item.item" @click.native="itemClick(item) "
               index="item.name">
               <span>{{item.name}}</span>
             </el-dropdown-item>
@@ -51,7 +51,7 @@
           <el-aside width="100px" class="last">主题</el-aside>
           <el-main>
             <el-dropdown-item v-for="item in theme" 
-              :key="item.item" @click.native="itemClick(item)"
+              :key="item.item" @click.native="itemClick(item) "
               index="item.name">
               <span>{{item.name}}</span>
             </el-dropdown-item>
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import eventBus from "common/eventBus"
 export default {
   name: "PlaylistHeader",
   props: {
@@ -118,19 +119,7 @@ export default {
   methods: {
     itemClick(item) {
       this.$emit('select',item)
-      // this.$router.push('/find/playlist/' + item.name)
-      // this.$route.push({
-      //   path:'/find/playlist',
-      //   query: {
-      //     id: item.name
-      //   }
-      // })
     }
-    // handleClick(item) {
-    //   // alert('button click');
-    //   this.$route.emit('select', item)
-      
-    // },
   },
 }
 </script>

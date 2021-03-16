@@ -34,11 +34,3 @@ export function getDjProgram(id) {
         url: "/dj/program?rid=" + id,
     })
 }
-
-// 组件构造器，将整合后的数据传给组件
-// export class DjInfo {
-//   constructor(detail) {
-//     this.title = detail.name
-//     this.desc = detail.desc
-//   }
-// }
