@@ -79,7 +79,10 @@ export default {
     // 热门推荐歌单
     getPersonalized() {
       getPersonalized(this.id).then(res => {
+      // Status Code:200 请求成功走这里
       this.recommend = res.data.result.slice(0, 8)
+    }).catch(err => {
+      // Status Code:404等等 捕捉异常，请求失败走这里
     })
     },
     getBanner() {
